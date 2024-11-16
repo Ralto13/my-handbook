@@ -1,4 +1,4 @@
-# vscode  shortcut
+# vscode shortcut
 사용하는 단축어 모음
 
 아래에 줄 복사 - ⇧ + ⌥ + DownArrow

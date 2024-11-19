@@ -106,3 +106,48 @@ function getColorName(c: Color): string {
     }
 }
 ```
+
+## basic 3
+### call signatures
+- 에디터에서 함수의 인자, 반환타입을 알려줌
+- 타입 지정하지 않아도 타입을 알려줌
+- 프로그램을 작성하기 전 타입을 먼저 생각하고 코드를 구현하는 방식에서 쓰임
+```typescript
+type Add = (a:number,b: number) => number
+const add:Add = (a,b) => a+b;
+```
+
+### Overloading
+- 함수가 여러개의 call signatures를 가진 경우 발생
+- Nextjs에서 함수인자 타입을 문자열과 객체로 받을 수 있는것을 볼 수 있음
+```typescript
+//객체를 넘기는 경우
+router.push({
+  path:"/home",
+  state:2
+})
+//문자열을 넘기는 경우
+router.push("/home")
+```
+
+- 위 라우터를 예시로 오버로딩한 코드
+```typescript
+type Config = {
+  path: string,
+  state: object
+}
+
+type Push = {
+  (path:string):void
+  (config:Config):void
+}
+
+// Push type alias 로 오버로딩
+const push:Push = (config) => {
+  if(typeof config === "string") // something code ... 
+  else {
+    //something code ...
+  }
+}
+```
+

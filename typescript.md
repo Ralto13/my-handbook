@@ -151,3 +151,40 @@ const push:Push = (config) => {
 }
 ```
 
+### Polymorphism
+- 타입을 위한 다양성
+
+#### generic
+- 함수
+```typescript
+// 보통 사용하게 될 제네릭
+function superPrint<T>(a: T[]){
+  return a[0]
+}
+
+// 제네릭 타입정의
+type Player<E> = {
+  name: string
+  extraInfo: E
+}
+
+type NicoExtra = {
+  favFood:string
+}
+
+type NicoPlayer = Player<{favFood:string}>
+
+// const nico:Player<NicoExtra> = {
+const nico:NicoPlayer = {
+  name:"nico",
+  extraInfo: {
+    favFood: "kim"
+  }
+}
+
+const lynn: Player<null> = {
+  name:"lynn",
+  extraInfo:null
+}
+
+```

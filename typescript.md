@@ -188,3 +188,63 @@ const lynn: Player<null> = {
 }
 
 ```
+
+## baisc 4
+### class
+- 객체지향 프로그래밍
+- 객체를 생성하기 위한 blueprint 또는 틀
+
+```typescript
+class User {
+  constructor(
+    public firstName:string
+  ){}
+}
+
+const user = new User("rumi");
+```
+
+### interface
+- 객체의 모양을 정의
+```typescript
+/*
+ interface와 역할이 같음
+type PlayerA = {
+  firstName:string
+}
+
+// 상속시 & 사용
+type PlayerAA = PlayerA & {
+  lastName:string
+}
+*/
+
+interface PlayerB {
+  firstName:string
+}
+//상속시 extends 키워드 사용
+interface PlayerBB extends PlayerB{
+  lastName:string
+}
+//extends 키워드 없이도 같은 이름으로 상속가능
+interface PlayerBB{
+  nickName:string
+}
+
+class User implements PlayerBB {
+  constructor(
+    public firstName:string,
+    public lastName:string,
+    public nickName
+  ){}
+}
+```
+#### 특징
+- type보다는 interface로 상속시키는 방법이 직관적
+- 추상 클래스를 대체할 수 있음
+- JS 코드에 노출되지 않아 코드를 줄임
+- 클래스나 오브젝트는 interface 그 외는 type 키워드 사용 (ts community)
+
+#### type alias와 차이
+- type은 새 property 추가 시 다시 선언될 수 없음
+- interface는 항상 상속이 가능
